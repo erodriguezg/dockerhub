@@ -1,7 +1,13 @@
 FROM ubuntu:16.04
 
-#SSH and Telnet
-RUN apt-get update && apt-get install telnet ssh -y
+#SSH Telnet Vim
+RUN apt-get update && apt-get install telnet ssh openssh-server vim -y
+
+#SSH SERVER CONFIG
+COPY sshd_config /etc/ssh/
+
+#start ssh server
+RUN /etc/init.d/ssh start
 
 # Install python tools
 RUN apt-get update \
