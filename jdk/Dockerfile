@@ -11,16 +11,8 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 
 COPY sshd_config /etc/ssh/
 
-RUN mkdir -p /home/ubuntu
-
-RUN useradd -u 1000 -r -g root -d /home/ubuntu -s /bin/bash -c "Ubuntu user" ubuntu
-
-RUN chown -R ubuntu:root /home/ubuntu
-
-RUN echo "ubuntu:ubuntu" | chpasswd
+RUN echo "root:root" | chpasswd
 
 EXPOSE 22
 
-WORKDIR /home/ubuntu
-
-CMD /bin/bash /etc/init.d/ssh start && su - ubuntu && /bin/bash
+CMD /bin/bash /etc/init.d/ssh start && /bin/bash
