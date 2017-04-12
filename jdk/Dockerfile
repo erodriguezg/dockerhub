@@ -11,8 +11,16 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 
 COPY sshd_config /etc/ssh/
 
-RUN echo "root:docker" | chpasswd
+RUN mkdir -p /home/ubuntu
+
+RUN useradd -u 1000 -r -g root -d /home/ubuntu -s /bin/bash -c "Ubuntu user" ubuntu
+
+RUN chown -R ubuntu:root /home/ubuntu
+
+RUN echo "ubuntu:ubuntu" | chpasswd
 
 EXPOSE 22
 
-CMD /bin/bash /etc/init.d/ssh start && /bin/bash
+WORKDIR /home/ubuntu
+
+CMD /bin/bash /etc/init.d/ssh start && su - ubuntu && /bin/bash
