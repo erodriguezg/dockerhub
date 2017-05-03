@@ -1,6 +1,6 @@
 FROM erodriguezg/jdk:1.8.121
 
-COPY apache-tomcat-8.5.13/* /opt/tomcat/
+COPY apache-tomcat-8.5.14/ /opt/tomcat/
 
 COPY setenv.sh /opt/tomcat/bin/
 
@@ -10,5 +10,5 @@ RUN rm -rf /opt/tomcat/webapps/examples
 
 EXPOSE 8080
 
-CMD /bin/bash
+CMD /opt/tomcat/bin/startup.sh && tail -f /opt/tomcat/logs/catalina.out
 
