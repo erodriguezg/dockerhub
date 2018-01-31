@@ -1,7 +1,7 @@
 FROM mongo:3.6
 
-// Auth Configuration. Modify as needed. 
-// These environment variables can also be specified through command line or docker-compose configuration
+# Auth Configuration. Modify as needed. 
+# These environment variables can also be specified through command line or docker-compose configuration
 # ENV AUTH yes
 
 # ENV MONGODB_ADMIN_USER root
