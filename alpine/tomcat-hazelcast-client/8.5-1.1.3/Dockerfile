@@ -1,19 +1,9 @@
-FROM erodriguezg/oracle-jdk:8u181
-
-ENV CATALINA_HOME=/opt/tomcat \
-  TOMCAT_DOWNLOAD_URL=http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.32/bin/apache-tomcat-8.5.32.tar.gz \
-
-
+FROM frolvlad/alpine-glibc:alpine-3.8
 
 ENV JAVA_HOME="/usr/lib/jvm/default-jvm" \
   MAVEN_HOME="/usr/lib/maven" \
   JDK_DOWNLOAD_URL=http://download.oracle.com/otn-pub/java/jdk/8u181-b13/96a7b8442fe848ef90c96a2fad6ed6d1/jdk-8u181-linux-x64.tar.gz \
   JDK_DOWNLOAD_COOKIE=oraclelicense=accept-securebackup-cookie
-
-ENV CATALINA_HOME=/opt/tomcat
-
-COPY hazelcast-all-3.10.3.jar hazelcast-tomcat85-sessionmanager-1.1.3.jar $CATALINA_HOME/lib
-COPY context.xml server.xml $CATALINA_HOME/conf
 
 RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates unzip && \
   echo  "wget --header \"Cookie: ${JDK_DOWNLOAD_COOKIE};\" -O /tmp/oracle-jdk.tar.gz ${JDK_DOWNLOAD_URL}" && \
