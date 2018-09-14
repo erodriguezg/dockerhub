@@ -28,9 +28,7 @@
     sticky="false"
     sessionBackupAsync="false"
     lockingMode="auto"
-    requestUriIgnorePattern=".*\.(ico|png|gif|jpg|jpeg|css|js)$"
-    transcoderFactoryClass="de.javakaffee.web.msm.serializer.kryo.KryoTranscoderFactory"
-    customConverter="de.javakaffee.web.msm.serializer.kryo.JodaDateTimeRegistration, de.javakaffee.web.msm.serializer.kryo.CGLibProxySerializerFactory, de.javakaffee.web.msm.serializer.kryo.FacesLRUMapRegistration, de.javakaffee.web.msm.serializer.kryo.HibernateCollectionsSerializerFactory"
+    requestUriIgnorePattern=".*\.(ico|png|gif|jpg|jpeg|css|js)$"    
     />
 
     <!--

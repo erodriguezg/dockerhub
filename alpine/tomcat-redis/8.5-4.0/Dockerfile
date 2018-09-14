@@ -10,9 +10,7 @@ RUN apk add --no-cache --virtual=build-dependencies wget && \
   cd /tmp && tar -xzf /tmp/tomcat.tar.gz && mkdir -p $CATALINA_HOME && mv apache-tomcat-*/* $CATALINA_HOME && rm -rf /tmp/* && \
   apk del build-dependencies
 
-COPY memcached-session-manager-2.3.0.jar memcached-session-manager-tc8-2.3.0.jar jedis-2.9.0.jar \
-	msm-kryo-serializer-2.3.0.jar kryo-serializers-0.41.jar \
-	kryo-4.0.2.jar minlog-1.3.0.jar objenesis-2.6.jar reflectasm-1.11.6.jar $CATALINA_HOME/lib/
+COPY memcached-session-manager-2.3.0.jar memcached-session-manager-tc8-2.3.0.jar jedis-2.9.0.jar $CATALINA_HOME/lib/
 COPY context.xml $CATALINA_HOME/conf/
 
 EXPOSE 8080
